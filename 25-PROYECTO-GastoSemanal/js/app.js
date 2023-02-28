@@ -54,6 +54,6 @@ if (presupuestoUsuario === " " || presupuestoUsuario === null || isNaN(presupues
     presupuesto = new Presupuesto(presupuestoUsuario);
     console.log(presupuesto);
 
-    ui.insertarPresupuesto(presupusto)
+    ui.insertarPresupuesto(presupuesto)
 }
 
