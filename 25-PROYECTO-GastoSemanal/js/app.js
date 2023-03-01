@@ -1,7 +1,7 @@
 //Variables y Selectores
 
-const formulario = document.querySelector("#agregar-gasto");
-const gastoListado = document.querySelector("#gastos ul");
+const formulario = document.getElementById('agregar-gasto');
+const gastosListado = document.querySelector('#gastos ul');
 
 
 //Eventos
@@ -25,9 +25,16 @@ class Presupuesto {
 
 class UI {
 insertarPresupuesto (cantidad) {
+
+    //? Extrayendo Valor.
+
 const {presupuesto , restante} = cantidad;
-document.querySelector("#total").textContent = presupuesto;
-document.querySelector("#restante").textContent = restante;
+
+//? Agregamos al html
+
+
+document.querySelector('#total').textContent = cantidad.presupuesto;
+document.querySelector('#restante').textContent = cantidad.restante;
 }
 }
 
@@ -40,17 +47,14 @@ let presupuesto;
 //Funciones
 
 function preguntarPresupuesto() {
-    const presupuestoUsuario = prompt("?Cual es tu presupuesto?")
+    const presupuestoUsuario = prompt("?Cual es tu presupuesto?");
 
 console.log (Number (presupuestoUsuario));
-}
-
-
 
 if (presupuestoUsuario === " " || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0 ) {
     window.location.reload();
-
-
+}
+  
     presupuesto = new Presupuesto(presupuestoUsuario);
     console.log(presupuesto);
 
