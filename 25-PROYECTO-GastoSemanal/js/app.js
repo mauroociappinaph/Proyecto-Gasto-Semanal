@@ -26,14 +26,9 @@ class Presupuesto {
 
 class UI {
     insertarPresupuesto (cantidad) {
-
         //? Extrayendo Valor.
-
-    const {presupuesto , restante} = cantidad;
-
+    const { presupuesto, restante } = cantidad; 
     //? Agregamos al html
-
-
     document.querySelector('#total').textContent = cantidad.presupuesto;
     document.querySelector('#restante').textContent = cantidad.restante;
     }
@@ -41,11 +36,21 @@ class UI {
     imprimirAlerta(mensaje , tipo) {
     //Crear el div 
     const divMensaje =  document.createElement('div') ; 
-    divMensaje.className.add ('text-center', 'alert')
+    divMensaje.classList.add ('text-center', 'alert') //? Alert es clase de Bootstrap.
+
+    if (tipo === 'error'){
+    divMensaje.classList.add ('alert-danger'); //? Alert-danger es clase de Bootstrap.
+    } else {
+    divMensaje.classList.add ('alert-success');//? Alert-success es clase de Bootstrap.
     }
 
-    }
+    //*Mensaje  de error
+    divMensaje.textContent = mensaje;
 
+    //* INSERTAR EN EL HTML
+    document.querySelector('.primario').insertBefore(divMensaje, formulario);
+    }
+}
 //Instancias
 
 const ui = new UI();
@@ -80,11 +85,10 @@ function agregarGasto(e) {
 
 // Leer datos del formulario
 const nombre = document.querySelector('#gasto').value; 
-const cantidad = document.querySelector('#cantidad').value; 
-
+const cantidad = Number( document.querySelector('#cantidad').value);
 //Validar 
 
-if (nombre === ' ' || cantidad === '') {
+if (nombre == ' ' || cantidad == '') {
     ui.imprimirAlerta('Ambos campos son obligatorios' , 'error');
 }
 }
