@@ -10,8 +10,9 @@ eventListeners();
 
 function eventListeners() {
     document.addEventListener('DOMContentLoaded', preguntarPresupuesto);
+    formulario.addEventListener('submit' , agregarGasto);
 }
-
+   
 
 //Clases
 
@@ -24,19 +25,26 @@ class Presupuesto {
 }
 
 class UI {
-insertarPresupuesto (cantidad) {
+    insertarPresupuesto (cantidad) {
 
-    //? Extrayendo Valor.
+        //? Extrayendo Valor.
 
-const {presupuesto , restante} = cantidad;
+    const {presupuesto , restante} = cantidad;
 
-//? Agregamos al html
+    //? Agregamos al html
 
 
-document.querySelector('#total').textContent = cantidad.presupuesto;
-document.querySelector('#restante').textContent = cantidad.restante;
-}
-}
+    document.querySelector('#total').textContent = cantidad.presupuesto;
+    document.querySelector('#restante').textContent = cantidad.restante;
+    }
+
+    imprimirAlerta(mensaje , tipo) {
+    //Crear el div 
+    const divMensaje =  document.createElement('div') ; 
+    divMensaje.className.add ('text-center', 'alert')
+    }
+
+    }
 
 //Instancias
 
@@ -51,9 +59,9 @@ function preguntarPresupuesto() {
 
 console.log (Number (presupuestoUsuario));
 
-if (presupuestoUsuario === " " || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0 ) {
+    if (presupuestoUsuario === " " || presupuestoUsuario === null || isNaN(presupuestoUsuario) || presupuestoUsuario <= 0 ) {
     window.location.reload();
-}
+    }
   
     presupuesto = new Presupuesto(presupuestoUsuario);
     console.log(presupuesto);
@@ -61,3 +69,22 @@ if (presupuestoUsuario === " " || presupuestoUsuario === null || isNaN(presupues
     ui.insertarPresupuesto(presupuesto)
 }
 
+
+
+
+// Anade gastos
+
+function agregarGasto(e) {
+    e.preventDefault();
+
+
+// Leer datos del formulario
+const nombre = document.querySelector('#gasto').value; 
+const cantidad = document.querySelector('#cantidad').value; 
+
+//Validar 
+
+if (nombre === ' ' || cantidad === '') {
+    ui.imprimirAlerta('Ambos campos son obligatorios' , 'error');
+}
+}
