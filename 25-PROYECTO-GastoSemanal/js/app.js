@@ -49,6 +49,12 @@ class UI {
 
     //* INSERTAR EN EL HTML
     document.querySelector('.primario').insertBefore(divMensaje, formulario);
+
+    //* QUITAR HTML
+    setTimeout (() => {
+        divMensaje.remove();
+    }, 3000);
+
     }
 }
 //Instancias
@@ -83,12 +89,22 @@ function agregarGasto(e) {
     e.preventDefault();
 
 
-// Leer datos del formulario
+//! Leer datos del formulario
 const nombre = document.querySelector('#gasto').value; 
 const cantidad = Number( document.querySelector('#cantidad').value);
-//Validar 
 
-if (nombre == ' ' || cantidad == '') {
+
+
+//! Validar 
+
+if (nombre == '' || cantidad == '') {
     ui.imprimirAlerta('Ambos campos son obligatorios' , 'error');
+    return;
+} else if ((cantidad <= 0 || isNaN(cantidad))) {
+ui.imprimirAlerta('Cantidad no válida', 'error')
+return;
 }
-}
+      
+
+console.log('Agregando gasto');
+} 
