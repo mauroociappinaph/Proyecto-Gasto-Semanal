@@ -36,3 +36,35 @@ h2 {
     font-size: 22px;
     margin-bottom:30px;
 }
+
+
+
+@media (max-width: 768px) {
+    body {
+      background: #000428;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #004e92, #000428);  
+  background: linear-gradient(to right, #004e92, #000428); 
+  }
+  header {
+      margin: 10px 0;
+  }
+  .contenido {
+      padding:10px;
+  }
+  .contenido-principal {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+  } 
+  
+   h1{  font-family: 'Raleway', sans-serif; font-weight: 100; color: white; font-size: 18px;}
+  
+   h2 { font-family: 'Raleway', sans-serif; font-weight: 100; color:#004e92; font-size: 16px; margin-bottom:15px;}
+  
+   .presupuesto p{ margin-bottom: 0; font-weight:bold ;font-size : 14px;}
+  
+   .presupuesto p span {font-weight : normal ;font-size : 12px;}
+  
+   #gastos {margin-bottom : 15px;} 
+  
+   }
