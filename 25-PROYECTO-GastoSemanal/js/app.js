@@ -16,13 +16,25 @@ function eventListeners() {
 
 //Clases
 
+/*Esta clase se encarga de administrar
+un presupuesto. Almacena el presupuesto total,
+el presupuesto restante y los gastos realizados. */
+
 class Presupuesto {
     constructor (presupuesto) {
         this.presupuesto = Number(presupuesto);
         this.restante = Number(presupuesto);
         this.gastos =[];
     }
+
+    nuevoGasto(gasto){
+        this.gastos = [ ...this.gastos , gasto];
+    }
+
 }
+
+/* pudo imprimir mensajes de alerta en la pantalla 
+si se cometían errores al ingresar los datos. */
 
 class UI {
     insertarPresupuesto (cantidad) {
@@ -106,5 +118,19 @@ return;
 }
       
 
-console.log('Agregando gasto');
+
+
+//! Generar un objeto con el gasto
+const gasto = {nombre , cantidad, id: Date.now()}  //? Objeto Creado 
+
+//! Añade un nuevo gasto
+presupuesto.nuevoGasto(gasto);
+
+
+//! Mensaje todo bien
+ui.imprimirAlerta('Gasto agregados correctamente');
+
+
+//! Reiniciar un formulario
+formulario.reset()
 } 
