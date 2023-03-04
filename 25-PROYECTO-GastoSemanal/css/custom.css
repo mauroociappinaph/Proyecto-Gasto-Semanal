@@ -38,6 +38,15 @@ h2 {
 }
 
 
+footer {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+
+}
+
 
 @media (max-width: 768px) {
     body {
