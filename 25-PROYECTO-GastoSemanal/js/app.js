@@ -131,6 +131,10 @@ presupuesto.nuevoGasto(gasto);
 ui.imprimirAlerta('Gasto agregados correctamente');
 
 
+//! Imprimir los gastos 
+const {gastos} = presupuesto;       //Destructuring
+ui.agregarGastoListado(gastos); 
+
 //! Reiniciar un formulario
 formulario.reset()
 } 
