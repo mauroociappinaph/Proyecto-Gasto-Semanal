@@ -27,6 +27,15 @@ class Presupuesto {
 
   nuevoGasto(gasto) {
     this.gastos = [...this.gastos, gasto];
+    this.calcularRestante();
+  }
+
+  calcularRestante(){
+    const gastado = this.gastos.reduce((total , gasto) =>  total + gasto.cantidad , 0 ); 
+    this.restante = this.presupuesto - gastado;
+
+    console.log(this.restante);
+ 
   }
 }
 
@@ -56,7 +65,7 @@ class UI {
     //?Mensaje  de error
     divMensaje.textContent = mensaje;
 
-    //* INSERTAR EN EL HTML
+    //? INSERTAR EN EL HTML
     document.querySelector(".primario").insertBefore(divMensaje, formulario);
 
     //? QUITAR HTML
@@ -80,7 +89,7 @@ this.limpiarHTML(); //! Elimina el HTML previo
 
       console.log(nuevoGasto);
       //! Agregar al HTML del gasto
-        nuevoGasto.innerHTML = `${nombre} <span class="badge badge-primary badge-pill"> ${cantidad} </span>`
+        nuevoGasto.innerHTML = `${nombre} <span class="badge badge-primary badge-pill">$ ${cantidad} </span>`
 
       //! Botones para borra el gasto
     const btnBorrar = document.createElement("button");
@@ -97,6 +106,9 @@ this.limpiarHTML(); //! Elimina el HTML previo
         gastosListado.removeChild(gastosListado.firstChild);
     }
   };
+  actualizarRestante(restante){
+    document.querySelector("#restante").textContent = restante;
+  }
 }
 //Instancias
 
@@ -106,7 +118,7 @@ let presupuesto;
 //Funciones
 
 function preguntarPresupuesto() {
-  const presupuestoUsuario = prompt("?Cual es tu presupuesto?");
+  const presupuestoUsuario = prompt("¿Cual es tu presupuesto?");
 
   console.log(Number(presupuestoUsuario));
 
@@ -154,8 +166,10 @@ function agregarGasto(e) {
   ui.imprimirAlerta("Gasto agregados correctamente");
 
   //! Imprimir los gastos
-  const { gastos } = presupuesto; //Destructuring
+  const { gastos , restante } = presupuesto; //Destructuring
   ui.agregarGastoListado(gastos);
+
+  ui.actualizarRestante(restante);
 
   //! Reiniciar un formulario
   formulario.reset();
