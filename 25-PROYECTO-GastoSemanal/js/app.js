@@ -37,6 +37,11 @@ class Presupuesto {
     console.log(this.restante);
  
   }
+
+  eliminarGasto(id){
+    console.log("Desde la clase");
+  }
+  ;
 }
 
 /* pudo imprimir mensajes de alerta en la pantalla 
@@ -95,6 +100,9 @@ this.limpiarHTML(); //! Elimina el HTML previo
     const btnBorrar = document.createElement("button");
     btnBorrar.classList.add("btn" , "btn-danger" , "borrar-gasto" );
         btnBorrar.innerHTML = "Borrar &times;"
+        btnBorrar.onclick =  () => {
+          eliminarGasto(id);
+        }
     nuevoGasto.appendChild(btnBorrar);
       //! Agregar el HTML
 
@@ -201,4 +209,10 @@ function agregarGasto(e) {
 
   //! Reiniciar un formulario
   formulario.reset();
+}
+
+function eliminarGasto(id){
+ presupuesto.eliminarGasto(id);
+ 
+  console.log(id);
 }
